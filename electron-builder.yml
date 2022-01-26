@@ -1,0 +1,35 @@
+appId: com.example.build.test
+productName: BuildTest App
+copyright: Copyright © 2022 Julio Cesar Mowes
+compression: normal
+npmRebuild: false
+directories:
+  output: dist
+  buildResources: resources
+files:
+  - from: .
+    filter:
+      - package.json
+      - app
+win:
+  target:
+    - nsis
+    - zip
+  signingHashAlgorithms:
+    - sha256
+    - sha1
+  signAndEditExecutable: true
+
+  requestedExecutionLevel: requireAdministrator
+  rfc3161TimeStampServer: http://timestamp.comodoca.com/rfc3161
+  timeStampServer: http://timestamp.xxx.com/timeStampServer.dll
+  icon: ./resources/icon2.ico
+  publisherName: Julio Cesar Mowes
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true
+  installerIcon: ./resources/icon.ico
+  artifactName: ${productName}-Setup-${version}.${ext}
+  shortcutName: BuildTestApp
+# publish:
+# - provider: github
